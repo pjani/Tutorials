@@ -3,6 +3,9 @@ using System.Data.Entity;
 
 namespace MvcMovie.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Movie
     {
         public int ID { get; set; }
