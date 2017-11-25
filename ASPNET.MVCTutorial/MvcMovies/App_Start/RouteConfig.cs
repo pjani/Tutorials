@@ -13,6 +13,9 @@ namespace MvcMovies
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //var controllerTypes = new[] { typeof(MvcMovies.Controllers.MoviesController) };
+            //routes.MapMvcAttributeRoutes(controllerTypes);
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

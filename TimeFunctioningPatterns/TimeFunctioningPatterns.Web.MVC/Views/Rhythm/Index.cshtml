@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TimeFunctioningPatterns.Web.MVC.Models.RhythmVersion>
+
+@{
+    ViewBag.Title = "Rhythm versions";
+}
+
+<h2>Rhythm versions</h2>
+<br />
+<h4>Rhythm: @ViewBag.RhythmDescription</h4>
+
+<div class="row">
+    <table class="table" style="width: 400px;">
+        <thead>
+            <tr>
+                <th class="text-center">Version</th>
+                <th class="text-center">Memos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ver in Model)
+            {
+                <tr>
+                    <td>@ver.Description</td>
+                    <td class="text-center">
+                        @Html.ActionLink("Fatback", "FatbackMemos", new { id = ver.Id }) |
+                        @Html.ActionLink("Snare/Bass", "SnareAndBassMemos", new { id = ver.Id }) |
+                        @Html.ActionLink("Hi-hat", "HiHatMemos", new { id = ver.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
