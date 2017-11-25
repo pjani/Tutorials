@@ -149,7 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RhythmController.cs" />
+    <Compile Include="Controllers\RhythmVersionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,10 +200,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Rhythm\Index.cshtml" />
-    <Content Include="Views\Rhythm\FatbackMemos.cshtml" />
-    <Content Include="Views\Rhythm\SnareAndBassMemos.cshtml" />
-    <Content Include="Views\Rhythm\HiHatMemos.cshtml" />
+    <Content Include="Views\RhythmVersion\Index.cshtml" />
+    <Content Include="Views\RhythmVersion\FatbackMemos.cshtml" />
+    <Content Include="Views\RhythmVersion\SnareAndBassMemos.cshtml" />
+    <Content Include="Views\RhythmVersion\HiHatMemos.cshtml" />
+    <Content Include="Views\RhythmVersion\AddMemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,8 @@ namespace TimeFunctioningPatterns.Web.MVC.Models
 
         public DbSet<Rhythm> Rhythms { get; set; }
         public DbSet<RhythmVersion> RhythmVariants { get; set; }
-
+        public DbSet<Memo> Memos { get; set; }
+        
         public void Seed()
         {
             var memos1 = new List<Memo>()
@@ -28,8 +29,20 @@ namespace TimeFunctioningPatterns.Web.MVC.Models
 
             var memos2 = new List<Memo>()
             {
-                new FatBackMemo(){Id = 3, Description = "Slow, should practice more", Created = DateTime.Now, OverallRating = "OK", Tempo = 55 },
-                new SnareAndBassMemo(){Id = 4, Description = "Needs work", Created = DateTime.Now, OverallRating = "Not bad", Tempo = 60 },
+                new FatBackMemo(){Id = 3, Description = "Slow, should practice more",
+                    Created = DateTime.Now.AddDays(-5), OverallRating = "OK", Tempo = 55 },
+                new FatBackMemo(){Id = 5, Description = "Slow, should practice more",
+                    Created = DateTime.Now.AddDays(-3), OverallRating = "OK", Tempo = 55 },
+                new FatBackMemo(){Id = 6, Description = "Slow, should practice more",
+                    Created = DateTime.Now.AddDays(-1), OverallRating = "OK", Tempo = 55 },
+                new SnareAndBassMemo(){Id = 4, Description = "Needs work",
+                    Created = DateTime.Now.AddDays(-5), OverallRating = "Not bad", Tempo = 60 },
+                new SnareAndBassMemo(){Id = 7, Description = "Needs work",
+                    Created = DateTime.Now.AddDays(-3), OverallRating = "Good", Tempo = 70 },
+                new SnareAndBassMemo(){Id = 8, Description = "Needs work",
+                    Created = DateTime.Now.AddDays(-2), OverallRating = "Good", Tempo = 70 },
+                new HiHatMemo(){Id = 9, Description = "Needs work",
+                    Created = DateTime.Now, OverallRating = "Good", Tempo = 60 }
             };
 
             var variants = new List<RhythmVersion>()

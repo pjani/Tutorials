@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TimeFunctioningPatterns.Web.MVC.Models.FatBackMemo>
+
+@{
+    ViewBag.Title = "FatbackMemos";
+}
+
+<h2>FatbackMemos</h2>
+<h4>Memos of rhythm version: @ViewBag.RhythmVersion</h4>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Date</th>
+                <th class="text-center">Tempo</th>
+                <th class="text-center">Overall rating</th>
+                <th class="text-center">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var memo in Model.OrderBy(m => m.Created))
+            {
+                <tr>
+                    <td class="text-center">@Html.DisplayFor(m => memo.Created)</td>
+                    <td class="text-center">@Html.DisplayFor(m => memo.Tempo) bpm</td>
+                    <td class="text-center">@Html.DisplayFor(m => memo.OverallRating)</td>
+                    <td class="text-center">@Html.DisplayFor(m => memo.Description)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

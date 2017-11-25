@@ -8,27 +8,6 @@ namespace TimeFunctioningPatterns.Web.MVC.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Rhythms",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Description = c.String(nullable: false, maxLength: 2000),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.RhythmVersions",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Description = c.String(nullable: false, maxLength: 2000),
-                        Rhythm_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Rhythms", t => t.Rhythm_Id)
-                .Index(t => t.Rhythm_Id);
-            
-            CreateTable(
                 "dbo.Memos",
                 c => new
                     {
@@ -44,17 +23,38 @@ namespace TimeFunctioningPatterns.Web.MVC.Migrations
                 .ForeignKey("dbo.RhythmVersions", t => t.RhythmVersion_Id)
                 .Index(t => t.RhythmVersion_Id);
             
+            CreateTable(
+                "dbo.RhythmVersions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Description = c.String(nullable: false, maxLength: 2000),
+                        Rhythm_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Rhythms", t => t.Rhythm_Id)
+                .Index(t => t.Rhythm_Id);
+            
+            CreateTable(
+                "dbo.Rhythms",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Description = c.String(nullable: false, maxLength: 2000),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.RhythmVersions", "Rhythm_Id", "dbo.Rhythms");
             DropForeignKey("dbo.Memos", "RhythmVersion_Id", "dbo.RhythmVersions");
-            DropIndex("dbo.Memos", new[] { "RhythmVersion_Id" });
             DropIndex("dbo.RhythmVersions", new[] { "Rhythm_Id" });
-            DropTable("dbo.Memos");
-            DropTable("dbo.RhythmVersions");
+            DropIndex("dbo.Memos", new[] { "RhythmVersion_Id" });
             DropTable("dbo.Rhythms");
+            DropTable("dbo.RhythmVersions");
+            DropTable("dbo.Memos");
         }
     }
 }
