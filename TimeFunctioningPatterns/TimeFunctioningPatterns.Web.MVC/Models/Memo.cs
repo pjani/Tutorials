@@ -25,6 +25,8 @@ namespace TimeFunctioningPatterns.Web.MVC.Models
         [StringLength(30)]
         public string OverallRating { get; set; }
 
+        public int RhythmVersionId { get; set; }
+
         public RhythmVersion RhythmVersion { get; set; }
     }
 

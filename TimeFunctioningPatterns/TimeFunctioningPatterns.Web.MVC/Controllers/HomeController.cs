@@ -13,9 +13,10 @@ namespace TimeFunctioningPatterns.Web.MVC.Controllers
         {
             using (var db = new TfplDbContext())
             {
-                List<Rhythm> rhythms = db.Rhythms.ToList();
+                //List<Rhythm> rhythms = db.Rhythms.ToList();
 
-                return View(rhythms);
+                //return View(rhythms);
+                return View();
             }
         }
 

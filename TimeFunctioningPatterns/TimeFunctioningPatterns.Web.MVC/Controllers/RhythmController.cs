@@ -10,107 +10,107 @@ using TimeFunctioningPatterns.Web.MVC.Models;
 
 namespace TimeFunctioningPatterns.Web.MVC.Controllers
 {
-    public class RhythmVersionController : Controller
+    public class RhythmController : Controller
     {
         private TfplDbContext db = new TfplDbContext();
 
-        // GET: RhythmVersion
+        // GET: Rhythm
         public ActionResult Index()
         {
-            return View(db.RhythmVariants.ToList());
+            return View(db.Rhythms.ToList());
         }
 
-        // GET: RhythmVersion/Details/5
+        // GET: Rhythm/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RhythmVersion rhythmVersion = db.RhythmVariants.Find(id);
-            if (rhythmVersion == null)
+            Rhythm rhythm = db.Rhythms.Find(id);
+            if (rhythm == null)
             {
                 return HttpNotFound();
             }
-            return View(rhythmVersion);
+            return View(rhythm);
         }
 
-        // GET: RhythmVersion/Create
+        // GET: Rhythm/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RhythmVersion/Create
+        // POST: Rhythm/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description")] RhythmVersion rhythmVersion)
+        public ActionResult Create([Bind(Include = "Id,Description")] Rhythm rhythm)
         {
             if (ModelState.IsValid)
             {
-                db.RhythmVariants.Add(rhythmVersion);
+                db.Rhythms.Add(rhythm);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(rhythmVersion);
+            return View(rhythm);
         }
 
-        // GET: RhythmVersion/Edit/5
+        // GET: Rhythm/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RhythmVersion rhythmVersion = db.RhythmVariants.Find(id);
-            if (rhythmVersion == null)
+            Rhythm rhythm = db.Rhythms.Find(id);
+            if (rhythm == null)
             {
                 return HttpNotFound();
             }
-            return View(rhythmVersion);
+            return View(rhythm);
         }
 
-        // POST: RhythmVersion/Edit/5
+        // POST: Rhythm/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description")] RhythmVersion rhythmVersion)
+        public ActionResult Edit([Bind(Include = "Id,Description")] Rhythm rhythm)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rhythmVersion).State = EntityState.Modified;
+                db.Entry(rhythm).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(rhythmVersion);
+            return View(rhythm);
         }
 
-        // GET: RhythmVersion/Delete/5
+        // GET: Rhythm/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RhythmVersion rhythmVersion = db.RhythmVariants.Find(id);
-            if (rhythmVersion == null)
+            Rhythm rhythm = db.Rhythms.Find(id);
+            if (rhythm == null)
             {
                 return HttpNotFound();
             }
-            return View(rhythmVersion);
+            return View(rhythm);
         }
 
-        // POST: RhythmVersion/Delete/5
+        // POST: Rhythm/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RhythmVersion rhythmVersion = db.RhythmVariants.Find(id);
-            db.RhythmVariants.Remove(rhythmVersion);
+            Rhythm rhythm = db.Rhythms.Find(id);
+            db.Rhythms.Remove(rhythm);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

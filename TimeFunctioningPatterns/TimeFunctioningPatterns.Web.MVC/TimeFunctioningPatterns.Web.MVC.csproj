@@ -149,7 +149,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemoController.cs" />
+    <Compile Include="Controllers\RhythmController.cs" />
     <Compile Include="Controllers\RhythmVersionController.cs" />
+    <Compile Include="Controllers\RhythmVersionControllerV1nemjo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,11 +203,27 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\RhythmVersionContr\Index.cshtml" />
+    <Content Include="Views\RhythmVersionContr\FatbackMemos.cshtml" />
+    <Content Include="Views\RhythmVersionContr\SnareAndBassMemos.cshtml" />
+    <Content Include="Views\RhythmVersionContr\HiHatMemos.cshtml" />
+    <Content Include="Views\RhythmVersionContr\AddMemo.cshtml" />
+    <Content Include="Views\RhythmVersionContr\GetMemos.cshtml" />
+    <Content Include="Views\Rhythm\Create.cshtml" />
+    <Content Include="Views\Rhythm\Delete.cshtml" />
+    <Content Include="Views\Rhythm\Details.cshtml" />
+    <Content Include="Views\Rhythm\Edit.cshtml" />
+    <Content Include="Views\Rhythm\Index.cshtml" />
+    <Content Include="Views\RhythmVersion\Create.cshtml" />
+    <Content Include="Views\RhythmVersion\Delete.cshtml" />
+    <Content Include="Views\RhythmVersion\Details.cshtml" />
+    <Content Include="Views\RhythmVersion\Edit.cshtml" />
     <Content Include="Views\RhythmVersion\Index.cshtml" />
-    <Content Include="Views\RhythmVersion\FatbackMemos.cshtml" />
-    <Content Include="Views\RhythmVersion\SnareAndBassMemos.cshtml" />
-    <Content Include="Views\RhythmVersion\HiHatMemos.cshtml" />
-    <Content Include="Views\RhythmVersion\AddMemo.cshtml" />
+    <Content Include="Views\Memo\Delete.cshtml" />
+    <Content Include="Views\Memo\Details.cshtml" />
+    <Content Include="Views\Memo\Edit.cshtml" />
+    <Content Include="Views\Memo\Index.cshtml" />
+    <Content Include="Views\Memo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

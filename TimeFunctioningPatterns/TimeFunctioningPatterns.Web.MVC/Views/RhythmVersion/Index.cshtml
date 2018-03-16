@@ -1,37 +1,42 @@
 ﻿@model IEnumerable<TimeFunctioningPatterns.Web.MVC.Models.RhythmVersion>
 
 @{
-    ViewBag.Title = "Rhythm versions";
+    ViewBag.Title = "Index";
 }
 
-<h2>Rhythm versions</h2>
-<br />
-<h4>Rhythm: @ViewBag.RhythmDescription</h4>
+<h2>Index</h2>
 
-<div class="row">
-    <table class="table" style="width: 550px;">
-        <thead>
-            <tr>
-                <th class="text-center">Version</th>
-                <th class="text-center">Memos</th>
-                <th class="text-center">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ver in Model)
-            {
-                <tr>
-                    <td>@ver.Description</td>
-                    <td class="text-center">
-                        @Html.ActionLink("Fatback", "FatbackMemos", new { id = ver.Id }) |
-                        @Html.ActionLink("Snare/Bass", "SnareAndBassMemos", new { id = ver.Id }) |
-                        @Html.ActionLink("Hi-hat", "HiHatMemos", new { id = ver.Id })
-                    </td>
-                    <td class="text-center">
-                        @Html.ActionLink("Add memo", "AddMemo", new { id = ver.Id })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+<p>
+    @Html.ActionLink("Create new version", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th class="text-center">Memos</th>
+        <th class="text-center" colspan="2"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td class="text-center">
+            @Html.RouteLink("Fatback", new { Controller = "Memo", Action = "Index", Id = item.Id, memoType = "fatback" }) | 
+            @Html.RouteLink("Snare/Bass", new { Controller = "Memo", Action = "Index", Id = item.Id, memoType = "snare" }) | 
+            @Html.RouteLink("Hi-hat", new { Controller = "Memo", Action = "Index", Id = item.Id, memoType = "hihat" })
+        </td>
+        <td class="text-center">
+            @Html.RouteLink("Add memo", new { Controller = "Memo", Action = "Create", Id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

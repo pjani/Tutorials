@@ -14,6 +14,8 @@ namespace TimeFunctioningPatterns.Web.MVC.Models
         [StringLength(2000)]
         public string Description { get; set; }
 
+        public int RhythmId { get; set; }
+
         public Rhythm Rhythm { get; set; }
 
         //public List<Memo> FatBackMemos { get; set; }

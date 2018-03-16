@@ -16,12 +16,12 @@ namespace TimeFunctioningPatterns.Web.MVC.Migrations
                         Created = c.DateTime(nullable: false),
                         Tempo = c.Int(nullable: false),
                         OverallRating = c.String(nullable: false, maxLength: 30),
+                        RhythmVersionId = c.Int(nullable: false),
                         Discriminator = c.String(nullable: false, maxLength: 128),
-                        RhythmVersion_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.RhythmVersions", t => t.RhythmVersion_Id)
-                .Index(t => t.RhythmVersion_Id);
+                .ForeignKey("dbo.RhythmVersions", t => t.RhythmVersionId, cascadeDelete: true)
+                .Index(t => t.RhythmVersionId);
             
             CreateTable(
                 "dbo.RhythmVersions",
@@ -29,11 +29,11 @@ namespace TimeFunctioningPatterns.Web.MVC.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Description = c.String(nullable: false, maxLength: 2000),
-                        Rhythm_Id = c.Int(),
+                        RhythmId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Rhythms", t => t.Rhythm_Id)
-                .Index(t => t.Rhythm_Id);
+                .ForeignKey("dbo.Rhythms", t => t.RhythmId, cascadeDelete: true)
+                .Index(t => t.RhythmId);
             
             CreateTable(
                 "dbo.Rhythms",
@@ -48,10 +48,10 @@ namespace TimeFunctioningPatterns.Web.MVC.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.RhythmVersions", "Rhythm_Id", "dbo.Rhythms");
-            DropForeignKey("dbo.Memos", "RhythmVersion_Id", "dbo.RhythmVersions");
-            DropIndex("dbo.RhythmVersions", new[] { "Rhythm_Id" });
-            DropIndex("dbo.Memos", new[] { "RhythmVersion_Id" });
+            DropForeignKey("dbo.RhythmVersions", "RhythmId", "dbo.Rhythms");
+            DropForeignKey("dbo.Memos", "RhythmVersionId", "dbo.RhythmVersions");
+            DropIndex("dbo.RhythmVersions", new[] { "RhythmId" });
+            DropIndex("dbo.Memos", new[] { "RhythmVersionId" });
             DropTable("dbo.Rhythms");
             DropTable("dbo.RhythmVersions");
             DropTable("dbo.Memos");

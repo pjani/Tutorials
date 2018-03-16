@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TimeFunctioningPatterns.Web.MVC.Models.Memo>
+
+@{
+    //ViewBag.Title = "GetMemos";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Memos of rhythm version: @ViewBag.RhythmVersion</h4>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Tempo)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.OverallRating)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(m => m.Created)) {
+    <tr>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Tempo)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.OverallRating)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+    </tr>
+}
+
+</table>
